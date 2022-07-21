@@ -29,17 +29,10 @@ export const restaurantsTransform = ({results = []}) => {
             isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
             isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
             address: restaurant.vicinity,
+            rating: restaurant.rating,
         }
     });
 
     return camelize(mappedResults);
 }
 
-restaurantsRequest()
-    .then(restaurantsTransform)
-    .then(transformedRespose => {
-        console.log(transformedRespose)
-    })
-    .catch((error) => {
-        console.log("error" + error)
-});

@@ -53,3 +53,10 @@ export const Stars = styled(SvgXml)`
     width: ${(props) => props.theme.sizes[1]};
     height: ${(props) => props.theme.sizes[1]};
 `
+
+export const RatingText = styled(Text)`
+    flex-direction: row;
+    justify-content: center;
+    color: gray;
+    font-size: 12px;
+`

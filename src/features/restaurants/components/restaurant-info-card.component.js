@@ -5,14 +5,14 @@ import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { TextComp } from "../../../components/typography/text.component";
-import { RestaurantCard, RestaurantCardCover, Info, Section, Rating, SectionEnd, Icon, Address, Open, Stars } from "./restaurant-info-card.styles";
+import { RestaurantCard, RestaurantCardCover, Info, Section, Rating, RatingText, SectionEnd, Icon, Address, Open, Stars } from "./restaurant-info-card.styles";
 
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
     const {
         name = 'Some Restaurant',
-        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet.png",
         photos = [
             'https://images.squarespace-cdn.com/content/v1/53a05cdee4b0c1bc44841a7b/1542171727651-BVFKHUH2MO5HMVF2HJRZ/101+Food+Photography+Tips?format=1000w',
         ],
@@ -30,7 +30,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             <Info>
                 <TextComp variant="label">{name}</TextComp>
                 <Section>
-                    <Rating>{ratingArray.map(() => (<Stars xml={star} />))}</Rating>
+                    <Rating>{ratingArray.map(() => (<Stars xml={star} />))}<RatingText> ({rating})</RatingText></Rating>
                     <SectionEnd>
                         {isClosedTemporarily && <TextComp variant="error">CLOSED TEMPORARILY</TextComp>}
                         <Spacer position="left" size="large">

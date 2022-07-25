@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import styled from "styled-components";
-import { Text, View, SafeAreaView, StatusBar, FlatList } from 'react-native';
+import { Text, View, SafeAreaView, StatusBar, FlatList, TouchableOpacity } from 'react-native';
 import { RestaurantInfoCard } from '../components/restaurant-info-card.component';
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { RestaurantsContext } from '../../../services/restaurants/restaurants.context';
@@ -8,7 +9,7 @@ import { ActivityIndicator } from 'react-native-paper';
 import { Search } from '../components/search.component';
 
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
 
     const {isLoading, error, restaurants} = useContext(RestaurantsContext);
 
@@ -36,9 +37,12 @@ export const RestaurantsScreen = () => {
                 renderItem={({ item }) => {
        
                     return(
-                        <Spacer position="bottom" size="large">
-                            <RestaurantInfoCard restaurant={item} />
-                        </Spacer>
+                        
+                        <TouchableOpacity onPress={() => navigation.navigate("Restaurant Detail")}>
+                            <Spacer position="bottom" size="large">
+                                <RestaurantInfoCard restaurant={item} />
+                            </Spacer>
+                        </TouchableOpacity>
                     )
                 }}
                 keyExtractor={(item) => item.name} />

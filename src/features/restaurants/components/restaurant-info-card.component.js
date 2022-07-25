@@ -19,7 +19,8 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         address = "111 Random Street",
         isOpenNow = true,
         rating = 4,
-        isClosedTemporarily = true
+        isClosedTemporarily = true,
+        placeId = ''
     } = restaurant;
 
     const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -30,7 +31,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             <Info>
                 <TextComp variant="label">{name}</TextComp>
                 <Section>
-                    <Rating>{ratingArray.map(() => (<Stars xml={star} />))}<RatingText> ({rating})</RatingText></Rating>
+                    <Rating>{ratingArray.map((_, i) => (<Stars key={`star-${placeId}-${i}`} xml={star} />))}<RatingText> ({rating})</RatingText></Rating>
                     <SectionEnd>
                         {isClosedTemporarily && <TextComp variant="error">CLOSED TEMPORARILY</TextComp>}
                         <Spacer position="left" size="large">

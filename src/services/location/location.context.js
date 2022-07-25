@@ -16,23 +16,23 @@ export const LocationContextProvider = ({ children }) => {
 
         setIsLoading(true);
         setKeyword(searchKeyword);
+    }
 
-        if(!searchKeyword.length){
+    useEffect(() => {
+
+        if(!keyword.length){
             return;
         }
 
-        locationRequest(searchKeyword.toLowerCase()).then(locationTransform).then(result => {
+        locationRequest(keyword.toLowerCase()).then(locationTransform).then(result => {
             setIsLoading(false);
             setLocation(result);
         }).catch(error => {
             setIsLoading(false);
             setError(error);
         })
-    }
 
-    useEffect(() => {
-        onSearch(keyword);
-    }, [])
+    }, [keyword])
 
     return(
         <LocationContext.Provider value={{ isLoading, error, location, search: onSearch, keyword}}>
